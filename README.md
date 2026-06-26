@@ -1,1 +1,1 @@
-### Hey this is my Machine Learning Project - Real Estate Price Prediction
+### Real Estate Price Prediction - ML model 
