@@ -31,6 +31,9 @@ The main goal of the project is to estimate the market value of a property based
 
 To make the solution practical and user-friendly, the final model was deployed as an interactive web application using Streamlit. This allows users to input property details and receive real-time price predictions, making the project not just analytical but also usable in real-world scenarios.
 
+**Website:** https://bit.ly/snehalsahu98_real_estate_price_predictor
+
+
 ---
 
 # Project Workflow
