@@ -5,19 +5,12 @@
 - [Project Overview](#project-overview)
 - [Project Workflow](#project-workflow)
 - [Data Source](#data-source)
-- [Technologies Used](#technologies-used)
 - [Data Cleaning](#data-cleaning)
 - [Feature Engineering](#feature-engineering)
 - [Outlier Treatment](#outlier-treatment)
 - [Missing Value Imputation](#missing-value-imputation)
 - [Feature Selection](#feature-selection)
 - [Model Building](#model-building)
-- [Exploratory Data Analysis](#exploratory-data-analysis)
-- [Results](#results)
-- [Future Improvements](#future-improvements)
-- [Project Structure](#project-structure)
-- [How to Run](#how-to-run)
-- [References](#references)
 
 ---
 
@@ -38,15 +31,22 @@ To make the solution practical and user-friendly, the final model was deployed a
 
 # Project Workflow
 
-The project follows a structured workflow that mirrors a typical data science pipeline. It begins with web scraping to collect raw property listings, followed by extensive data cleaning to ensure consistency and reliability. Feature engineering is then applied to extract meaningful information from the data, which is further explored through exploratory data analysis to uncover patterns and trends.
+The project was completed in the following stages:
 
-After understanding the data, the next steps involve handling outliers and imputing missing values to improve data quality. Feature selection techniques are then used to identify the most relevant variables for prediction. Finally, multiple machine learning models are trained and evaluated, and the best-performing model is deployed using Streamlit for real-time predictions.
+1. Web Scraping
+2. Data Cleaning
+3. Feature Engineering
+4. Exploratory Data Analysis
+5. Outlier Treatment
+6. Missing Value Imputation
+7. Feature Selection
+8. Model Building & Evaluation
+9. Recommender System
+10. Streamlit Deployment
 
 ---
 
 # Data Source
-
-> **📷 Insert Dataset Workflow Image Here**
 
 The dataset used in this project was created by scraping property listings from a real estate website. Two separate datasets were initially collected, one for flats and another for independent houses. Each dataset was cleaned individually to address inconsistencies specific to that property type before being merged into a unified dataset for analysis and modeling.
 
@@ -67,23 +67,6 @@ The combined dataset includes a wide range of attributes such as:
 
 ---
 
-# Technologies Used
-
-This project was developed using Python and a range of popular data science libraries.
-
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- Scikit-learn
-- XGBoost
-- Streamlit
-- Jupyter Notebook
-- Pickle
-
----
-
 # Data Cleaning
 
 The raw dataset contained several inconsistencies, missing values, duplicate entries, and text-based attributes that required careful preprocessing.
@@ -94,7 +77,6 @@ The cleaning process included:
 - Removing irrelevant columns
 - Standardizing price formats
 - Converting text-based numerical values into numeric format
-- Extracting floor numbers
 - Extracting sector information
 - Standardizing furnishing categories
 - Cleaning balcony information
@@ -107,28 +89,11 @@ The cleaning process included:
 
 Feature engineering played a crucial role in improving the predictive performance of the model.
 
-New features created include:
+Important features created include:
 
 - Built-up Area
-- Property Type
 - Sector
-- Property Age Category
-- Furnishing Category
-- Luxury Category
-- Floor Category
-- Number of Additional Rooms
-
-Additional feature engineering involved:
-
-- Extracting built-up area from multiple area measurements
-- Creating a luxury score based on available amenities
-- Categorizing furnishing levels using clustering
-- Categorizing floor numbers into Low Rise, Mid Rise, and High Rise
-- Extracting individual additional rooms such as:
-  - Study Room
-  - Servant Room
-  - Pooja Room
-  - Store Room
+- Luxury Score
 
 ---
 
