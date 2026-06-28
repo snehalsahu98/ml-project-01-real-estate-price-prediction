@@ -95,47 +95,25 @@ Important features created include:
 - Sector
 - Luxury Score
 
+Furnishing details were converted into numerical counts based on the number of available furnishing items in a property. The K-Means clustering algorithm, along with the Elbow Method, was then used to determine the optimal number of clusters, resulting in three furnishing categories: Unfurnished, Semi-Furnished, and Fully Furnished. Society amenities were assigned weighted scores, which were aggregated to compute a Luxury Score for each property. Additional features such as Additional Rooms, Floor Number and Property Age were created to better capture property characteristics.
+
 ---
 
 # Outlier Treatment
 
-Outlier treatment was performed carefully to ensure that genuine high-value properties were not removed.
+Outlier treatment was performed carefully to improve data quality while preserving genuine high-value properties. Instead of removing all extreme observations, each potential outlier was investigated individually to distinguish legitimate luxury properties from data entry errors and inconsistencies.
 
-The process included:
+The process began by correcting incorrect area calculations, which also required updating the corresponding Price per Square Foot values since they are directly dependent on the property's area. Several records contained unrealistic area measurements caused by conversion errors, and these were manually corrected wherever possible. Properties with physically impossible configurations, such as extremely small homes containing an unusually large number of bedrooms, were identified using the **Area-to-Bedroom ratio** and removed from the dataset.
 
-- Correcting incorrect area calculations
-- Updating Price per Sq.ft after correcting area values
-- Removing physically impossible records
-- Treating extreme values in:
-  - Price
-  - Area
-  - Price per Sq.ft
-  - Built-up Area
-  - Carpet Area
-- Using the Area-to-Bedroom ratio to identify unrealistic listings
-
-Rather than blindly removing outliers, domain knowledge was used to distinguish genuine luxury properties from incorrect records.
+Extreme values across important numerical features in Price, Area, Price per Square Foot, Built-up Area, and Carpet Area were corrected, capped, or removed based on their validity, ensuring a cleaner and more reliable dataset for model training.
 
 ---
 
 # Missing Value Imputation
 
-Missing values were handled using a combination of statistical techniques and domain knowledge.
+Missing values were handled using a combination of statistical techniques and domain knowledge to preserve the quality of the dataset. Different imputation strategies were applied based on the nature of each feature rather than using a single approach for all missing values.
 
-Different strategies included:
-
-- Median Imputation
-- Correlation-based Imputation
-- Property Type-based Imputation
-- Sector-based Imputation
-
-Important features imputed include:
-
-- Built-up Area
-- Property Age
-- Floor Number
-
-Features containing excessive missing values with limited predictive importance were removed from the final dataset.
+Highly correlated features were used to estimate missing Built-up Area, while Property Age was imputed using the median value of properties belonging to the same sector and property type. Missing Floor Number values were filled using median imputation. Features containing excessive missing values with limited predictive importance were removed from the final dataset.
 
 ---
 
@@ -143,7 +121,7 @@ Features containing excessive missing values with limited predictive importance 
 
 To identify the most relevant variables, multiple feature selection techniques were evaluated.
 
-Methods used include:
+8 techniques used include:
 
 - Correlation Analysis
 - Random Forest Feature Importance
