@@ -16,8 +16,6 @@
 
 # Project Overview
 
-> **📷 Insert Project Screenshot Here**
-
 This project focuses on building a complete end-to-end machine learning pipeline to predict residential property prices using data collected through web scraping. It walks through every stage of the data science lifecycle, starting from gathering raw data and transforming it into a usable format, all the way to building, evaluating, and deploying a predictive model.
 
 The main goal of the project is to estimate the market value of a property based on various characteristics such as location, built-up area, furnishing level, property age, amenities, and several engineered features derived from the raw data. By combining domain knowledge with machine learning techniques, the model aims to capture patterns that influence property pricing.
