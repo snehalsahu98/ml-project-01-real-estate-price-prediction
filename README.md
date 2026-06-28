@@ -140,9 +140,16 @@ The importance scores from all techniques were compared to identify consistently
 
 Before training, the target variable (property price) was transformed using a logarithmic transformation to reduce its right-skewed distribution. The input features were preprocessed using a Column Transformer, where numerical features were standardized, ordinal categorical features were encoded using Ordinal Encoding, and nominal categorical features were encoded using One-Hot Encoding. These preprocessing steps were integrated into a Pipeline, and K-Fold Cross Validation was used to evaluate the models.
 
-A total of 11 regression algorithms were evaluated, including Linear Regression, Ridge, Lasso, Support Vector Regression, Decision Tree, Random Forest, Extra Trees, Gradient Boosting, AdaBoost, XGBoost, and Multi-layer Perceptron Regressor. Each model was assessed using **R² Score** and **Mean Absolute Error (MAE)**. While the R² score measured the model's predictive performance, the MAE represented the average prediction error in lakhs of rupees, making it easier to interpret the model's real-world accuracy.
+A total of 11 regression algorithms were trained and compared using R² Score and Mean Absolute Error (MAE).
 
-The initial best-performing model achieved an R² score of approximately 83%. By applying Target Encoding to the Sector feature and performing Hyperparameter Tuning, the final model achieved an R² score of approximately 90% while also reducing the MAE, resulting in more accurate property price predictions.
+Linear Regression • Ridge • Lasso • Support Vector Regression • Decision Tree • Random Forest • Extra Trees • Gradient Boosting • AdaBoost • XGBoost • Multi-layer Perceptron Regressor
+
+While the R² score measured the model's predictive performance, the MAE represented the average prediction error in lakhs of rupees, making it easier to interpret the model's real-world accuracy.
+
+Initial base model R² score = 83%. 
+Final Model R² score = 90%. 
+
+The base model performance was improved by applying **Target Encoding** to the Sector column and performing **Hyperparameter Tuning**. The MAE was also reduced from 49 lakhs to 45 lakhs, thereby resulting in more accurate property price predictions.
 
 The complete pipeline was exported as a Pickle file for deployment.
 
@@ -171,13 +178,8 @@ Exploratory Data Analysis helped uncover several important trends within the rea
 Some key observations include:
 
 - Property prices are heavily right-skewed.
-- Most listings fall between **₹1–2 Crore**.
-- Very few properties are priced above **₹5 Crore**.
+- Most listings fall between **₹1–2 Crore** price range.
 - Flats generally offer better amenities than houses.
-- Houses usually have larger built-up areas.
-- Newer sectors contain more apartment projects.
-- Older sectors primarily consist of independent houses.
-- Premium sectors command significantly higher property prices.
 - Around **75 societies account for more than 50%** of all available listings.
 - Luxury apartment projects are concentrated near major IT hubs.
 
@@ -193,9 +195,8 @@ The final machine learning pipeline achieved:
 Project achievements:
 
 - Built a complete end-to-end machine learning pipeline.
-- Compared multiple regression algorithms.
-- Applied extensive feature engineering.
-- Evaluated eight feature selection techniques.
+- Compared 11 regression algorithms.
+- Evaluated 8 feature selection techniques.
 - Developed a recommendation system to suggest similar apartment societies
 - Developed a deployable prediction pipeline.
 - Built an interactive Streamlit web application for real-time property price prediction.
@@ -207,6 +208,6 @@ Project achievements:
 Potential enhancements include:
 
 - Expanding the dataset with additional property listings.
+- Expanding analysis to multi metro cities of India.
 - Periodically retraining the model using recent market data.
-- Incorporating geospatial features such as proximity to schools, metro stations, and commercial hubs.
 - Experimenting with advanced ensemble and deep learning models.
