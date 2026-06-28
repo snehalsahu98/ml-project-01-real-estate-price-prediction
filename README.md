@@ -138,41 +138,29 @@ The importance scores from all techniques were compared to identify consistently
 
 # Model Building
 
-Before training, the target variable was transformed using a logarithmic transformation to reduce right skewness.
+Before training, the target variable (property price) was transformed using a logarithmic transformation to reduce its right-skewed distribution. The input features were preprocessed using a Column Transformer, where numerical features were standardized, ordinal categorical features were encoded using Ordinal Encoding, and nominal categorical features were encoded using One-Hot Encoding. These preprocessing steps were integrated into a Pipeline, and K-Fold Cross Validation was used to evaluate the models.
 
-A complete machine learning pipeline was constructed consisting of:
+A total of 11 regression algorithms were evaluated, including Linear Regression, Ridge, Lasso, Support Vector Regression, Decision Tree, Random Forest, Extra Trees, Gradient Boosting, AdaBoost, XGBoost, and Multi-layer Perceptron Regressor. Each model was assessed using **R² Score** and **Mean Absolute Error (MAE)**. While the R² score measured the model's predictive performance, the MAE represented the average prediction error in lakhs of rupees, making it easier to interpret the model's real-world accuracy.
 
-- Data Preprocessing
-- Column Transformer
-- Feature Encoding
-- Feature Scaling
-- Target Encoding
-- Machine Learning Model
-- K-Fold Cross Validation
-
-The following regression models were evaluated:
-
-- Linear Regression
-- Ridge Regression
-- Lasso Regression
-- Support Vector Regression
-- Decision Tree
-- Random Forest
-- Extra Trees
-- Gradient Boosting
-- AdaBoost
-- XGBoost
-- Multi-layer Perceptron Regressor
-
-The final model used:
-
-- Numerical Feature Scaling
-- Ordinal Encoding
-- One-Hot Encoding
-- Target Encoding
-- Random Forest Regressor
+The initial best-performing model achieved an R² score of approximately 83%. By applying Target Encoding to the Sector feature and performing Hyperparameter Tuning, the final model achieved an R² score of approximately 90% while also reducing the MAE, resulting in more accurate property price predictions.
 
 The complete pipeline was exported as a Pickle file for deployment.
+
+---
+
+# Recommendation System
+
+The project includes a recommendation system that helps users discover suitable apartment societies in two different ways. 
+1. Users can select an apartment society to receive five similar society recommendations.
+2. Users can choose a landmark and specify a search radius to find apartment societies located nearby.
+
+To generate these recommendations, three independent recommendation systems were developed, each capturing a different aspect of similarity:
+
+- **Amenities-based Recommendation:** Societies are compared based on the amenities they offer, such as swimming pools, gyms, clubhouses, sports facilities, and other lifestyle features. Properties with similar amenities are considered similar.
+- **Price-based Recommendation:** Societies are recommended based on the average property prices, allowing users to discover alternatives within a similar price range.
+- **Distance-based Recommendation:** Recommendations are generated using the geographical distance between societies, helping users find properties located close to their preferred location.
+
+The final recommendations are produced by combining the similarity scores from all three recommenders using a weighted scoring approach. This makes the system highly customizable, as the importance of each recommender can be adjusted by changing its weight. This allows the recommendation engine to be customized by assigning higher importance to amenities, price, or location based on user preferences.
 
 ---
 
@@ -208,6 +196,7 @@ Project achievements:
 - Compared multiple regression algorithms.
 - Applied extensive feature engineering.
 - Evaluated eight feature selection techniques.
+- Developed a recommendation system to suggest similar apartment societies
 - Developed a deployable prediction pipeline.
 - Built an interactive Streamlit web application for real-time property price prediction.
 
@@ -221,56 +210,3 @@ Potential enhancements include:
 - Periodically retraining the model using recent market data.
 - Incorporating geospatial features such as proximity to schools, metro stations, and commercial hubs.
 - Experimenting with advanced ensemble and deep learning models.
-- Integrating SHAP-based model explainability into the Streamlit application.
-
----
-
-# Project Structure
-
-```text
-Real-Estate-Price-Prediction/
-│
-├── notebooks/
-├── datasets/
-├── docs/
-├── streamlit_project/
-├── models/
-├── README.md
-└── requirements.txt
-```
-
----
-
-# How to Run
-
-Clone the repository:
-
-```bash
-git clone https://github.com/snehalsahu98/ml-project-01-real-estate-price-prediction.git
-```
-
-Install the required dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Run the Streamlit application:
-
-```bash
-streamlit run Home.py
-```
-
----
-
-# References
-
-This project makes use of the following open-source libraries and frameworks:
-
-- Scikit-learn
-- Pandas
-- NumPy
-- Streamlit
-- XGBoost
-- Matplotlib
-- Seaborn
