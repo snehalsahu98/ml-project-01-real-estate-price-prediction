@@ -146,8 +146,8 @@ Linear Regression • Ridge • Lasso • Support Vector Regression • Decision
 
 While the R² score measured the model's predictive performance, the MAE represented the average prediction error in lakhs of rupees, making it easier to interpret the model's real-world accuracy.
 
-Initial base model R² score = 83%. 
-Final Model R² score = 90%. 
+- Initial base model R² score = 83%. 
+- Final Model R² score = 90%. 
 
 The base model performance was improved by applying **Target Encoding** to the Sector column and performing **Hyperparameter Tuning**. The MAE was also reduced from 49 lakhs to 45 lakhs, thereby resulting in more accurate property price predictions.
 
